@@ -5,6 +5,7 @@ import React from "react";
 import Reveal from "../reveal";
 import toast, { Toaster } from "react-hot-toast";
 import { FiDownload, FiMail } from "react-icons/fi";
+import CodeEditor from "./codeEditor";
 
 type Props = {};
 
@@ -96,31 +97,7 @@ const Hero = (props: Props) => {
         </div>
       </div>
 
-      <div className="relative group">
-        <Reveal>
-          <Image
-            src="/profile_light_purple.png"
-            alt="Light purple rectangle"
-            width={372}
-            height={430}
-            className="hidden md:block w-[372px] h-[430px] absolute right-0 top-0 -z-10 group-hover:scale-[102%] group-hover:-rotate-2 ease-in-out duration-300"
-          />
-          <Image
-            src="/profile_dark_purple.png"
-            alt="Dark purple rectangle"
-            width={372}
-            height={430}
-            className="hidden md:block w-[372px] h-[430px] absolute right-0 top-0 -z-10 group-hover:scale-[102%] group-hover:rotate-2 ease-in-out duration-300"
-          />
-          <Image
-            src="/profile_picture.png"
-            alt="Yash Puniwala Profile Picture"
-            width={357}
-            height={417}
-            className="hidden md:block min-w-[357px] h-[417px] z-10 mr-[7.7px] my-[6.5px] group-hover:scale-[102%] ease-in-out duration-300"
-          />
-        </Reveal>
-      </div>
+      <CodeEditor />
     </section>
   );
 };
