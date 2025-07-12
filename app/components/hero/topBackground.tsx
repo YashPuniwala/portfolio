@@ -21,7 +21,7 @@ const TopBackground = (props: Props) => {
           </div>
           
           {/* Bracket icon */}
-          <div className="circle-icon top-[120px] -left-4 md:top-64 md:left-0">
+          <div className="circle-icon top-[120px] -left-4 md:top-64 md:left-0 ">
             <Image
               src="/bracket_icon.svg"
               alt="Bracket Icon"
@@ -32,7 +32,7 @@ const TopBackground = (props: Props) => {
           </div>
           
           {/* Github icon */}
-          <div className="circle-icon top-[200px] left-[245px] md:top-[570px] md:left-[27rem]">
+          <div className="circle-icon top-[200px] left-[245px] md:top-[570px] md:left-64">
             <Image
               src="/github_icon.svg"
               alt="Github Icon"
