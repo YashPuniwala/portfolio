@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private', '/admin'],
     },
-    sitemap: 'http://localhost:3000/sitemap.xml',
+    sitemap: 'https://yashpuniwala.vercel.app/sitemap.xml',
   }
 }
