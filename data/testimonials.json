@@ -1,0 +1,44 @@
+[
+  {
+    "image": "/user_1.png",
+    "name": "Samiksha Verma",
+    "role": "Senior Software Engineer @ Catalog.io",
+    "description":
+      "Even as a junior software engineer, Yash demonstrated an exceptional ability to solve complex problems. His attention to detail and willingness to go the extra mile helped us meet critical project deadlines."
+  },
+  {
+    "image": "/user_2.png",
+    "name": "Mihir Chaudhary",
+    "role": "Product Manager @ TechSolutions",
+    "description":
+      "Yash's frontend development skills brought our design concepts to life with pixel-perfect precision. His React implementations improved our app performance by 40%."
+  },
+  {
+    "image": "/user_3.png",
+    "name": "Priyanka Patel",
+    "role": "CTO @ DevCraft",
+    "description":
+      "We hired Yash for a 3-month contract but extended to a full year because of his outstanding contributions. He became our go-to expert for solving our toughest JavaScript challenges."
+  },
+  {
+    "image": "https://randomuser.me/api/portraits/men/32.jpg",
+    "name": "Deepak Wilson",
+    "role": "Engineering Lead @ CloudNine",
+    "description":
+      "Yash's ability to quickly understand complex systems and propose elegant solutions impressed our entire team. He delivered our API integration project 2 weeks ahead of schedule."
+  },
+  {
+    "image": "https://randomuser.me/api/portraits/women/68.jpg",
+    "name": "Emiliya Rathi",
+    "role": "UX Director @ DesignHub",
+    "description":
+      "Working with Yash was a pleasure. He transformed our Figma designs into functional components while suggesting accessibility improvements we hadn't considered."
+  },
+  {
+    "image": "https://randomuser.me/api/portraits/men/75.jpg",
+    "name": "Jayant Kumar",
+    "role": "Founder @ StartupLabs",
+    "description":
+      "Yash built our MVP from scratch in record time. His clean code and documentation made it easy for our team to take over development after launch."
+  }
+]

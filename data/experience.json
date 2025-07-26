@@ -1,0 +1,34 @@
+[
+  {
+    "image": "https://cdn-icons-png.flaticon.com/512/2282/2282188.png",
+    "company": "Yashi IT Services",
+    "role": "Frontend Developer",
+    "description": "Designed and developed a pest control management platform with admin dashboard for handling customer details, service records, technician inputs (including signatures and photos), and PDF generation for documentation.",
+    "dates": "July 2023 - December 2023",
+    "fallbackLogo": "/yashi_it_fallback.png"
+  },
+  {
+    "image": "https://cdn-icons-png.flaticon.com/512/2421/2421233.png",
+    "company": "Archi-Touch",
+    "role": "Frontend Developer",
+    "description": "Created a responsive interior design company website with advanced animations using Framer Motion, implementing smooth transitions and interactive elements to showcase their portfolio and services.",
+    "dates": "March 2023 - November 2023",
+    "fallbackLogo": "/architouch_fallback.png"
+  },
+  {
+    "image": "https://cdn-icons-png.flaticon.com/512/1055/1055687.png",
+    "company": "Freelance Developer",
+    "role": "Fullstack Developer",
+    "description": "Built various web applications for clients including e-commerce solutions, content management systems, and custom business tools using React, Next.js, Node.js, and MongoDB.",
+    "dates": "2021 - 2023",
+    "fallbackLogo": "/freelance_fallback.png"
+  },
+  {
+    "image": "https://cdn-icons-png.flaticon.com/512/1086/1086741.png",
+    "company": "Tech Solutions Inc.",
+    "role": "Web Development Intern",
+    "description": "Assisted in developing and maintaining client websites, implemented responsive designs, and contributed to internal tools development while learning industry best practices.",
+    "dates": "June 2021 - December 2021",
+    "fallbackLogo": "/internship_fallback.png"
+  }
+]
