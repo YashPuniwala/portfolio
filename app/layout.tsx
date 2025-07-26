@@ -17,11 +17,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yashpuniwala.vercel.app"),
   title: "Yash Puniwala - Fullstack Developer | MERN Stack Expert | Mumbai",
-  description: "Experienced Fullstack Developer specializing in React, Next.js, Node.js, TypeScript, MongoDB, PostgreSQL & Prisma. Based in Mumbai. Available for freelance projects and full-time opportunities.",
+  description:
+    "Experienced Fullstack Developer specializing in React, Next.js, Node.js, TypeScript, MongoDB, PostgreSQL & Prisma. Based in Mumbai. Available for freelance projects and full-time opportunities.",
   keywords: [
     "fullstack developer",
-    "MERN stack developer", 
+    "MERN stack developer",
     "React developer",
     "Next.js developer",
     "Node.js developer",
@@ -35,7 +37,7 @@ export const metadata: Metadata = {
     "JavaScript developer",
     "Mumbai",
     "freelance developer",
-    "Yash Puniwala"
+    "Yash Puniwala",
   ],
   authors: [{ name: "Yash Puniwala" }],
   creator: "Yash Puniwala",
@@ -57,7 +59,8 @@ export const metadata: Metadata = {
     url: "https://yashpuniwala.vercel.app",
     siteName: "Yash Puniwala - Fullstack Developer",
     title: "Yash Puniwala - Fullstack Developer | MERN Stack Expert | Mumbai",
-    description: "Experienced Fullstack Developer specializing in React, Next.js, Node.js, TypeScript, MongoDB, PostgreSQL & Prisma. Based in Mumbai.",
+    description:
+      "Experienced Fullstack Developer specializing in React, Next.js, Node.js, TypeScript, MongoDB, PostgreSQL & Prisma. Based in Mumbai.",
     images: [
       {
         url: "/og-image.png",
@@ -70,7 +73,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Yash Puniwala - Fullstack Developer | MERN Stack Expert",
-    description: "Experienced Fullstack Developer specializing in React, Next.js, Node.js, TypeScript, MongoDB, PostgreSQL & Prisma.",
+    description:
+      "Experienced Fullstack Developer specializing in React, Next.js, Node.js, TypeScript, MongoDB, PostgreSQL & Prisma.",
     images: ["/og-image.png"],
     creator: "@YashPuniwala04",
   },

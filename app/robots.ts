@@ -1,14 +1,13 @@
+// app/robots.ts
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://yashpuniwala.vercel.app'
-  
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/private/', '/admin/'],
+      disallow: ['/private', '/admin'],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: 'http://localhost:3000/sitemap.xml',
   }
 }

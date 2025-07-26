@@ -1,8 +1,9 @@
+// app/sitemap.ts
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://yashpuniwala.vercel.app'
-  
+  const baseUrl = 'http://localhost:3000' // ✅ Update from localhost
+
   return [
     {
       url: baseUrl,
