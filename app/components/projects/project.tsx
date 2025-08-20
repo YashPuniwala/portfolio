@@ -72,7 +72,6 @@ const Project = ({
       >
         {/* Main Card */}
         <div className="relative h-full bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-[#1a1a1a] dark:via-[#1e1e1e] dark:to-[#252525] rounded-2xl p-6 shadow-lg border border-gray-200/50 dark:border-gray-700/50 transition-all duration-300 hover:shadow-2xl hover:border-gray-300/70 dark:hover:border-gray-600/70">
-          
           {/* Thumbnail with Overlay */}
           <div className="relative w-full aspect-video overflow-hidden rounded-xl mb-6 group-hover:scale-[1.02] transition-transform duration-300">
             <Image
@@ -81,11 +80,9 @@ const Project = ({
               fill
               className="object-cover"
             />
-            
+
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            
-
           </div>
 
           {/* Content */}
@@ -119,7 +116,7 @@ const Project = ({
             </div>
 
             {/* Links Section */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 relative z-10">
               {links.map((link, idx) => (
                 <a
                   key={idx}
@@ -147,7 +144,7 @@ const Project = ({
 
         {/* Animated Background Glow */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-xl -z-10"
+          className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-xl -z-10 pointer-events-none"
           animate={{
             opacity: isHovered ? 0.6 : 0,
             scale: isHovered ? 1.05 : 1,
