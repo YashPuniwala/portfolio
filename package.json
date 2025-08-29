@@ -14,7 +14,7 @@
     "classnames": "^2.5.1",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^12.23.3",
-    "next": "15.1.7",
+    "next": "^15.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.5.2",
