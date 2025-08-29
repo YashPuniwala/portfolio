@@ -48,20 +48,24 @@
     ]
   },
   {
-    "thumbnail": "/thumbnails/messenger-video-thumbnail.png",
-    "title": "Messenger",
+    "thumbnail": "/thumbnails/trello.png",
+    "title": "Trellux (Trello Clone)",
     "links": [
+       {
+        "label": "Live Demo",
+        "url": "https://trello-clone-ecru-pi.vercel.app/"
+      },
       {
         "label": "GitHub",
-        "url": "https://github.com/RahulGosh/messenger-video"
+        "url": "https://github.com/YashPuniwala/Trello-clone"
       }
     ],
-    "description": "Responsive YouTube clone using React.js and RapidAPI. Features video playback in 1080P+, search functionality, category filtering, and modern UI mimicking YouTube's design.",
+    "description": "A collaborative task management app inspired by Trello, built with React and Node.js. Features include board and list creation, draggable cards with real-time updates, and responsive UI for seamless productivity across devices. Designed with modern drag-and-drop functionality and clean layouts for team collaboration.",
     "languageIcons": [
       "https://api.iconify.design/skill-icons:nextjs-dark.svg",
       "https://api.iconify.design/skill-icons:typescript.svg",
       "https://api.iconify.design/skill-icons:prisma.svg",
-      "https://api.iconify.design/skill-icons:mongodb.svg",
+      "https://api.iconify.design/skill-icons:postgresql-dark.svg",
       "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
     ]
   },
@@ -99,6 +103,24 @@
       "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg",
       "https://api.iconify.design/skill-icons:typescript.svg",
       "https://api.iconify.design/skill-icons:mongodb.svg"
+    ]
+  },
+  {
+    "thumbnail": "/thumbnails/messenger-video-thumbnail.png",
+    "title": "Messenger",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/RahulGosh/messenger-video"
+      }
+    ],
+    "description": "Responsive YouTube clone using React.js and RapidAPI. Features video playback in 1080P+, search functionality, category filtering, and modern UI mimicking YouTube's design.",
+    "languageIcons": [
+      "https://api.iconify.design/skill-icons:nextjs-dark.svg",
+      "https://api.iconify.design/skill-icons:typescript.svg",
+      "https://api.iconify.design/skill-icons:prisma.svg",
+      "https://api.iconify.design/skill-icons:mongodb.svg",
+      "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
     ]
   }
 ]
