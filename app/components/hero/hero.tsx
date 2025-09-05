@@ -6,22 +6,32 @@ import Reveal from "../reveal";
 import toast, { Toaster } from "react-hot-toast";
 import { FiDownload, FiMail } from "react-icons/fi";
 import CodeEditor from "./codeEditor";
+import { useRouter } from "next/navigation";
+import { User } from "@clerk/nextjs/server";
 
-type Props = {};
 
-const Hero = (props: Props) => {
+type Props = {
+  userId: string | null
+};
+
+const Hero = async({userId}: Props) => {
+  const router = await useRouter()
+
   const handleDownload = () => {
     try {
-      // Replace with your actual resume file path
-      const resumeUrl = "/yashresume.pdf";
+      if (!userId) {
+        router.push("/sign-in");
+        return;
+      }
+
+      const resumeUrl = "/YashPuniwalaResume.pdf";
       const link = document.createElement("a");
       link.href = resumeUrl;
       link.download = "Yash_Puniwala_Resume.pdf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
-      // Show beautiful toast after download
+
       toast.success(
         <div className="flex flex-col gap-1">
           <span className="font-semibold">📄 Resume downloaded!</span>
@@ -61,7 +71,11 @@ const Hero = (props: Props) => {
       <Toaster />
       <div className="flex flex-col gap-[13px] items-center md:gap-[34px] md:my-[58px] md:items-start">
         <Reveal initialX={-25}>
-          <h1 className="text-2xl/1 text-center font-semibold block md:text-[40px] md:text-start md:inline" role="heading" aria-level={1}>
+          <h1
+            className="text-2xl/1 text-center font-semibold block md:text-[40px] md:text-start md:inline"
+            role="heading"
+            aria-level={1}
+          >
             <span className="-ml-3">👋</span> Hello I'm Yash Puniwala{" "}
             <span className="block text-[27px] highlight mt-2 md:text-[45px] md:inline md:mt-0">
               FullStack Developer
@@ -69,7 +83,10 @@ const Hero = (props: Props) => {
           </h1>
         </Reveal>
         <Reveal initialX={-30} delay={0.2}>
-          <p className="text-center text-sm mx-6 md:text-[22px] md:text-start md:mx-0" role="text">
+          <p
+            className="text-center text-sm mx-6 md:text-[22px] md:text-start md:mx-0"
+            role="text"
+          >
             I'm obsessed with code and helping startups create unique and
             helpful products.
           </p>

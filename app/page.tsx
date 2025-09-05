@@ -4,12 +4,15 @@ import Navbar from "./components/navbar";
 import Sections from "./components/sections";
 import Skills from "./components/skills/skills";
 import ThemeToggle from "./components/themeToggle";
+import { auth } from "@clerk/nextjs/server";
 
-export default function Home() {
+export default async function Home() {
+    const { userId } = await auth()
+
   return (
     <div className="relative overflow-clip" id="home">
       <Sections />
-      <Navbar />
+      <Navbar userId={userId} />
       <ThemeToggle />
       <TopBackground />
       <Image
