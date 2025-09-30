@@ -1,0 +1,126 @@
+[
+  {
+    "thumbnail": "/thumbnails/evently thumbnail.png",
+    "title": "Evently - Event Management",
+    "links": [
+      {
+        "label": "Live Demo",
+        "url": "https://evently-six-lake.vercel.app/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/yourusername/evently"
+      }
+    ],
+    "description": "Next.js event platform with admin CRUD, Google/GitHub auth, and Prisma/PostgreSQL. Features include ticket ordering with coupon discounts, PDF downloads with QR codes, and secure QR validation via camera/file upload. Integrated email ticket delivery.",
+    "languageIcons": [
+      "https://api.iconify.design/skill-icons:nextjs-dark.svg",
+      "https://api.iconify.design/skill-icons:typescript.svg",
+      "https://api.iconify.design/skill-icons:prisma.svg",
+      "https://api.iconify.design/skill-icons:postgresql-dark.svg",
+      "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
+    ]
+  },
+  {
+    "thumbnail": "/thumbnails/forever ecommerce mern stack.png",
+    "title": "Forever Ecommerce",
+    "links": [
+      {
+        "label": "Live Frontend",
+        "url": "https://ecommerce-frontend-1234.netlify.app/"
+      },
+      {
+        "label": "Live Admin",
+        "url": "https://ecommerce-admin-dashboard-1234.netlify.app/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/RahulGosh/ecommerce"
+      }
+    ],
+    "description": "Full-featured e-commerce app with React and Node.js. Includes product management, user authentication, and seamless order processing with mobile-first responsive design and admin dashboard.",
+    "languageIcons": [
+      "https://api.iconify.design/skill-icons:react-dark.svg",
+      "https://api.iconify.design/skill-icons:nodejs-dark.svg",
+      "https://api.iconify.design/skill-icons:mongodb.svg",
+      "https://api.iconify.design/skill-icons:typescript.svg",
+      "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
+    ]
+  },
+  {
+    "thumbnail": "/thumbnails/trello.png",
+    "title": "Trellux (Trello Clone)",
+    "links": [
+       {
+        "label": "Live Demo",
+        "url": "https://trello-clone-ecru-pi.vercel.app/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/YashPuniwala/Trello-clone"
+      }
+    ],
+    "description": "A collaborative task management app inspired by Trello, built with React and Node.js. Features include board and list creation, draggable cards with real-time updates, and responsive UI for seamless productivity across devices. Designed with modern drag-and-drop functionality and clean layouts for team collaboration.",
+    "languageIcons": [
+      "https://api.iconify.design/skill-icons:nextjs-dark.svg",
+      "https://api.iconify.design/skill-icons:typescript.svg",
+      "https://api.iconify.design/skill-icons:prisma.svg",
+      "https://api.iconify.design/skill-icons:postgresql-dark.svg",
+      "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
+    ]
+  },
+  {
+    "thumbnail": "/thumbnails/archi-touch thumbnail.png",
+    "title": "Archi-Touch Interior Design",
+    "link": {
+      "label": "Visit Site",
+      "url": "https://archi-touch.vercel.app/"
+    },
+    "description": "Advanced animated website for interior design services using Framer Motion. Fully responsive with smooth transitions and interactive elements to showcase design portfolio.",
+    "languageIcons": [
+      "https://api.iconify.design/skill-icons:react-dark.svg",
+      "https://cdn.worldvectorlogo.com/logos/framer-motion.svg",
+      "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
+    ]
+  },
+  {
+    "thumbnail": "/thumbnails/LMS.png",
+    "title": "LMS Course Mern Stack",
+    "links": [
+      {
+        "label": "Live Demo",
+        "url": "https://lms-course-two.vercel.app/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/YashPuniwala/LMS-Course"
+      }
+    ],
+
+    "description": "A modern Learning Management System built with the MERN stack. It allows users to browse, enroll, and watch premium courses. Features include user authentication, course search, video playback, and Stripe payment integration. Designed with a clean UI and real-time data handling.",
+    "languageIcons": [
+      "https://api.iconify.design/skill-icons:react-dark.svg",
+      "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg",
+      "https://api.iconify.design/skill-icons:typescript.svg",
+      "https://api.iconify.design/skill-icons:mongodb.svg"
+    ]
+  },
+  {
+    "thumbnail": "/thumbnails/messenger-video-thumbnail.png",
+    "title": "Messenger",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/RahulGosh/messenger-video"
+      }
+    ],
+    "description": "Responsive YouTube clone using React.js and RapidAPI. Features video playback in 1080P+, search functionality, category filtering, and modern UI mimicking YouTube's design.",
+    "languageIcons": [
+      "https://api.iconify.design/skill-icons:nextjs-dark.svg",
+      "https://api.iconify.design/skill-icons:typescript.svg",
+      "https://api.iconify.design/skill-icons:prisma.svg",
+      "https://api.iconify.design/skill-icons:mongodb.svg",
+      "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
+    ]
+  }
+]
