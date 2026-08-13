@@ -1,4 +1,5 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Project } from "../data/projects";
 import GithubIcon from "./icons/GithubIcon";
 import { ExternalLink, X } from "lucide-react";
@@ -91,60 +92,31 @@ const ProjectDetail = ({
 /* ---------------- Constants ---------------- */
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
-const TRANSITION_DURATION = 400;
-const GAP = 20;
 const FLEX_TRANSITION = `flex-grow 400ms ${EASE}, flex-basis 400ms ${EASE}`;
 
-const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
-
-/* ---------------- Bento layout math ---------------- */
-
-interface TilePos {
-  left: number;
-  top: number;
-  width: number;
-  height: number;
-}
-
 /**
- * Three layout states — one per tile being "active". The active tile always
- * occupies the same square region (full container height × full container
- * height) on the left. The other two tiles split the remaining right column
- * evenly, stacked top and bottom. Only which tile fills the square changes.
+ * CSS Grid template for the bento: one large area spanning 2 columns + 2 rows,
+ * and two small areas stacked in the right column. Which project maps to "large"
+ * vs "smallA"/"smallB" is driven by activeIndex — the grid itself guarantees
+ * no two tiles can ever overlap.
+ *
+ *   ┌───────┬───────┐
+ *   │       │ smallA│
+ *   │ large  ├───────┤
+ *   │       │ smallB│
+ *   └───────┴───────┘
  */
-function computePositions(
-  containerW: number,
-  containerH: number,
-  activeTile: number,
-): TilePos[] {
-  const squareSize = containerH;
-  const remainingWidth = Math.max(0, containerW - squareSize - GAP);
-  const halfHeight = (containerH - GAP) / 2;
+const GRID_TEMPLATE = `"large smallA" "large smallB"`;
+const GRID_COLS = "1fr 1fr";
+const GRID_ROWS = "1fr 1fr";
 
-  const square: TilePos = { left: 0, top: 0, width: squareSize, height: squareSize };
-  const smallTop: TilePos = {
-    left: squareSize + GAP,
-    top: 0,
-    width: remainingWidth,
-    height: halfHeight,
-  };
-  const smallBottom: TilePos = {
-    left: squareSize + GAP,
-    top: halfHeight + GAP,
-    width: remainingWidth,
-    height: halfHeight,
-  };
+/** Which grid area each project index occupies, given the active project. */
+const areaForIndex = (index: number, activeIndex: number): string => {
+  if (index === activeIndex) return "large";
+  return index < activeIndex ? `small${index === 0 ? "A" : "B"}` : `small${index === 2 ? "B" : "A"}`;
+};
 
-  const smalls: TilePos[] = [smallTop, smallBottom];
-  let si = 0;
-
-  return [0, 1, 2].map((i) => {
-    if (i === activeTile) return square;
-    return smalls[si++] ?? smallTop;
-  });
-}
-
-/* ---------------- Bento Tile (absolute positioned, desktop) ---------------- */
+/* ---------------- Bento Tile (CSS Grid + Framer Motion layout) ---------------- */
 
 interface BentoTileProps {
   project: Project;
@@ -152,9 +124,9 @@ interface BentoTileProps {
   panelId: string;
   onToggle: () => void;
   onActivate: () => void;
-  pos: TilePos;
+  gridArea: string;
   isLarge: boolean;
-  animate: boolean;
+  animateLayout: boolean;
   titleClass: string;
 }
 
@@ -164,12 +136,15 @@ const BentoTile = ({
   panelId,
   onToggle,
   onActivate,
-  pos,
+  gridArea,
   isLarge,
-  animate,
+  animateLayout,
   titleClass,
 }: BentoTileProps) => (
-  <div
+  <motion.div
+    layout={animateLayout}
+    layoutId={`bento-${project.name}`}
+    transition={{ duration: 0.4, ease: EASE }}
     role="button"
     tabIndex={0}
     aria-expanded={isOpen}
@@ -183,18 +158,8 @@ const BentoTile = ({
     }}
     onMouseEnter={onActivate}
     onFocus={onActivate}
-    style={{
-      position: "absolute",
-      left: pos.left,
-      top: pos.top,
-      width: pos.width,
-      height: pos.height,
-      boxSizing: "border-box",
-      transition: animate
-        ? `left ${TRANSITION_DURATION}ms ${EASE}, top ${TRANSITION_DURATION}ms ${EASE}, width ${TRANSITION_DURATION}ms ${EASE}, height ${TRANSITION_DURATION}ms ${EASE}`
-        : "none",
-    }}
-    className="group relative isolate box-border cursor-pointer overflow-hidden rounded-2xl bg-black/5 outline-none focus-visible:ring-2 focus-visible:ring-black/40 sm:rounded-3xl"
+    style={{ gridArea, boxSizing: "border-box" }}
+    className="group relative isolate box-border h-full min-h-0 w-full min-w-0 cursor-pointer overflow-hidden rounded-2xl bg-black/5 outline-none focus-visible:ring-2 focus-visible:ring-black/40 sm:rounded-3xl"
   >
     <img
       src={project.image}
@@ -204,7 +169,7 @@ const BentoTile = ({
     />
     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
 
-    <div className="pointer-events-none relative flex h-full min-w-0 flex-col justify-between gap-4 p-[clamp(1rem,2.5vw,1.75rem)]">
+    <div className="pointer-events-none relative flex h-full min-h-0 min-w-0 flex-col justify-between gap-3 p-[clamp(1rem,2.5vw,1.75rem)]">
       <span
         className="block max-w-[calc(100%-2.5rem)] truncate font-mono text-[clamp(0.6rem,0.55rem+0.2vw,0.75rem)] font-bold uppercase tracking-[0.2em] text-white/70 transition-opacity duration-300"
         style={{ opacity: isLarge ? 1 : 0 }}
@@ -225,7 +190,7 @@ const BentoTile = ({
     >
       <X className="h-5 w-5" />
     </span>
-  </div>
+  </motion.div>
 );
 
 /* ---------------- Flex Tile (for "more work" section, unchanged) ---------------- */
@@ -316,49 +281,25 @@ const FlexTile = ({
 /* ---------------- Section ---------------- */
 
 const Work = ({ projects }: WorkProps) => {
+  const prefersReducedMotion = useReducedMotion();
   const [useBento, setUseBento] = useState(false);
-  const [animate, setAnimate] = useState(false);
   const [active, setActive] = useState<number | null>(null);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [dims, setDims] = useState({ w: 0, h: 0 });
 
   useEffect(() => {
     const desktopMq = window.matchMedia(
       "(hover: hover) and (pointer: fine) and (min-width: 1024px)",
     );
-    const reducedMq = window.matchMedia("(prefers-reduced-motion: reduce)");
-
     const sync = () => {
-      const desktop = desktopMq.matches;
-      const reduced = reducedMq.matches;
-      setUseBento(desktop);
-      setAnimate(desktop && !reduced);
-      if (!desktop) setActive(null);
+      setUseBento(desktopMq.matches);
+      if (!desktopMq.matches) setActive(null);
     };
     sync();
     desktopMq.addEventListener("change", sync);
-    reducedMq.addEventListener("change", sync);
-    return () => {
-      desktopMq.removeEventListener("change", sync);
-      reducedMq.removeEventListener("change", sync);
-    };
+    return () => desktopMq.removeEventListener("change", sync);
   }, []);
 
-  useIsoLayoutEffect(() => {
-    if (!useBento) return;
-    const container = containerRef.current;
-    if (!container) return;
-
-    const measure = () => {
-      const rect = container.getBoundingClientRect();
-      setDims({ w: rect.width, h: rect.height });
-    };
-    measure();
-    const ro = new ResizeObserver(measure);
-    ro.observe(container);
-    return () => ro.disconnect();
-  }, [useBento]);
+  const animateLayout = useBento && !prefersReducedMotion;
 
   const featured = projects.slice(0, 3);
   const rest = projects.slice(3);
@@ -367,13 +308,11 @@ const Work = ({ projects }: WorkProps) => {
   const openInFeatured = openIndex !== null && openIndex < 3;
   const openInRest = openIndex !== null && openIndex >= 3;
 
-  const bentoActive = animate && active !== null && active < 3 ? active : 0;
-  const positions =
-    dims.w > 0 && dims.h > 0 ? computePositions(dims.w, dims.h, bentoActive) : null;
+  const activeIndex = active !== null && active < 3 ? active : 0;
 
   const restGrow = (i: number) =>
     active === i + 3 ? 2.4 : active !== null && active >= 3 ? 0.7 : 1;
-  const restShrunk = (i: number) => animate && active !== null && active !== i + 3;
+  const restShrunk = (i: number) => animateLayout && active !== null && active !== i + 3;
 
   return (
     <section
@@ -388,10 +327,9 @@ const Work = ({ projects }: WorkProps) => {
           </h2>
         </header>
 
-        {/* Tier 1 — featured bento (absolute-positioned layout states) */}
+        {/* Tier 1 — featured bento (CSS Grid + Framer Motion layout animation) */}
         {useBento ? (
           <div
-            ref={containerRef}
             onMouseLeave={() => setActive(null)}
             onBlur={(e) => {
               const related = e.relatedTarget as Node | null;
@@ -399,34 +337,38 @@ const Work = ({ projects }: WorkProps) => {
                 setActive(null);
               }
             }}
-            className="relative w-full"
-            style={{ height: "clamp(460px, 58vh, 560px)" }}
+            className="grid w-full"
+            style={{
+              gridTemplateAreas: GRID_TEMPLATE,
+              gridTemplateColumns: GRID_COLS,
+              gridTemplateRows: GRID_ROWS,
+              gap: "clamp(0.75rem,1.5vw,1.5rem)",
+              height: "clamp(460px, 58vh, 560px)",
+            }}
           >
-            {positions &&
-              featured.map((project, i) => {
-                const pos = positions[i];
-                if (!pos) return null;
-                return (
-                  <BentoTile
-                    key={project.name}
-                    project={project}
-                    isOpen={openIndex === i}
-                    panelId="project-detail-featured"
-                    onToggle={() => toggle(i)}
-                    onActivate={() => {
-                      if (animate) setActive(i);
-                    }}
-                    pos={pos}
-                    isLarge={i === bentoActive}
-                    animate={animate}
-                    titleClass={
-                      i === bentoActive
-                        ? "text-[clamp(1.5rem,1rem+3vw,3rem)]"
-                        : "text-[clamp(1rem,0.85rem+1vw,1.5rem)]"
-                    }
-                  />
-                );
-              })}
+            {featured.map((project, i) => {
+              const area = areaForIndex(i, activeIndex);
+              return (
+                <BentoTile
+                  key={project.name}
+                  project={project}
+                  isOpen={openIndex === i}
+                  panelId="project-detail-featured"
+                  onToggle={() => toggle(i)}
+                  onActivate={() => {
+                    if (animateLayout) setActive(i);
+                  }}
+                  gridArea={area}
+                  isLarge={i === activeIndex}
+                  animateLayout={animateLayout}
+                  titleClass={
+                    i === activeIndex
+                      ? "text-[clamp(1.5rem,1rem+3vw,3rem)]"
+                      : "text-[clamp(1rem,0.85rem+1vw,1.5rem)]"
+                  }
+                />
+              );
+            })}
           </div>
         ) : (
           /* Mobile / tablet / reduced-motion: static stacked layout */
@@ -495,11 +437,11 @@ const Work = ({ projects }: WorkProps) => {
                   isOpen={openIndex === i + 3}
                   panelId="project-detail-rest"
                   onToggle={() => toggle(i + 3)}
-                  onActivate={() => animate && setActive(i + 3)}
+                  onActivate={() => animateLayout && setActive(i + 3)}
                   onDeactivate={() => setActive(null)}
                   grow={restGrow(i)}
                   shrunk={restShrunk(i)}
-                  animate={animate}
+                  animate={animateLayout}
                   className="h-[clamp(190px,38vw,280px)] sm:min-w-[240px]"
                   titleClass="text-[clamp(1.05rem,0.9rem+1.2vw,1.6rem)]"
                 />
